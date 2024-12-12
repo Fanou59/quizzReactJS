@@ -1,4 +1,5 @@
-import { WrapperQuizz } from "./components/wrapperQuizz";
+import { Quiz } from "./components/Quiz";
+import { data } from "./data/data";
 
 function App() {
   return (
@@ -6,9 +7,9 @@ function App() {
       <h1 className="font-bold uppercase tracking-widest text-2xl">
         Quizz Championship
       </h1>
-      <div className="card bg-primary text-primary-content w-96">
+      <div className="card bg-primary text-primary-content w-fit">
         <div className="card-body">
-          <WrapperQuizz />
+          <Quiz quizData={data} />
         </div>
       </div>
     </div>
