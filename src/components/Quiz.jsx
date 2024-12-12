@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import { useState } from "react";
 
 export const Quiz = ({ quizData }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
