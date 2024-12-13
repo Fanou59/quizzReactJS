@@ -2,6 +2,11 @@ import { Quiz } from "./components/Quiz";
 import { data } from "./data/data";
 import { secondeGuerre } from "./data/secondeGuerre";
 import { islam } from "./data/islam";
+import { nutrition } from "./data/nutrition";
+import { sommeil } from "./data/sommeil";
+import { sommeilV2 } from "./data/sommeilV2";
+import { santeMentale } from "./data/santeMentale";
+import { bienEtre } from "./data/bienEtre";
 
 function App() {
   return (
@@ -9,7 +14,7 @@ function App() {
       <h1 className="font-bold uppercase tracking-widest text-2xl text-white">
         Quizz Championship
       </h1>
-      <Quiz quizData={islam} />
+      <Quiz quizData={bienEtre} />
     </div>
   );
 }
