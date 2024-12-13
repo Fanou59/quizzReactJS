@@ -14,7 +14,7 @@ function App() {
       <h1 className="font-bold uppercase tracking-widest text-2xl text-white">
         Quizz Championship
       </h1>
-      <Quiz quizData={bienEtre} />
+      <Quiz quizData={santeMentale} />
     </div>
   );
 }
