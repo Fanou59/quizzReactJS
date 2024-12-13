@@ -1,0 +1,19 @@
+En rapport avec le sujet suivant : la guerre de 1939 à 1945
+
+Génère un fichier JSON contenant 5 questions à choix multiples sur ce contenu. Chaque question doit inclure :
+- Une question
+- Trois choix de réponses (dont une correcte)
+
+Exemple de format JSON :
+[
+    {
+    id: 1,
+    questionText: "Quel est le plus grand océan du monde ?",
+    options: [
+      { id: "a", text: "Océan Atlantique", isCorrect: false },
+      { id: "b", text: "Océan Indien", isCorrect: false },
+      { id: "c", text: "Océan Pacifique", isCorrect: true },
+    ],
+  },
+    ...
+]

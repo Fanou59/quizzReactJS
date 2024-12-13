@@ -1,5 +1,7 @@
 import { Quiz } from "./components/Quiz";
 import { data } from "./data/data";
+import { secondeGuerre } from "./data/secondeGuerre";
+import { islam } from "./data/islam";
 
 function App() {
   return (
@@ -7,7 +9,7 @@ function App() {
       <h1 className="font-bold uppercase tracking-widest text-2xl text-white">
         Quizz Championship
       </h1>
-      <Quiz quizData={data} />
+      <Quiz quizData={islam} />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Score } from "./Score";
+import { AnswerProposal } from "./AnswerProposal";
 
 export const Quiz = ({ quizData }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -24,15 +25,20 @@ export const Quiz = ({ quizData }) => {
 
   if (showResults) {
     return (
-      <>
+      <div className="flex flex-col items-center gap-5">
         <Score score={score} quizData={quizData.length} />
+        {score >= 2 ? (
+          <span className="text-green-500">Bravo ! 🎉</span>
+        ) : (
+          <span className="text-red-500">Dommage ! 😢</span>
+        )}
         <button
           className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
           onClick={resetQuiz}
         >
           Retry
         </button>
-      </>
+      </div>
     );
   }
 
@@ -40,19 +46,18 @@ export const Quiz = ({ quizData }) => {
 
   return (
     <>
-      <div className="mx-auto max-w-md rounded-lg bg-white shadow p-4">
+      <div className="mx-auto rounded-lg bg-white shadow p-4 flex-grow">
         <h2 className="text-xl font-medium text-gray-900">
           {question.questionText}
         </h2>
         <div className="flex flex-col items-center">
           {question.options.map((option, index) => (
-            <button
-              className="mt-1 text-gray-500"
+            <AnswerProposal
               key={index}
               onClick={() => handleAnswer(option.isCorrect)}
             >
               {option.text}
-            </button>
+            </AnswerProposal>
           ))}
         </div>
       </div>
