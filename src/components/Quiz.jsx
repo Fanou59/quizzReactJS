@@ -1,8 +1,17 @@
 import { useState, useEffect } from "react";
 import { AnswerProposal } from "./AnswerProposal";
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 export const Quiz = ({ quizData, handleAnswer, handleShowResults }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [shuffledOptions, setShuffledOptions] = useState([]);
 
   const handleNextQuestion = (isCorrect) => {
     handleAnswer(isCorrect);
@@ -10,6 +19,7 @@ export const Quiz = ({ quizData, handleAnswer, handleShowResults }) => {
 
     if (nextQuestion < quizData.length) {
       setCurrentQuestion(nextQuestion);
+      setShuffledOptions(shuffleArray(quizData[nextQuestion].options));
     } else {
       handleShowResults();
     }
@@ -17,6 +27,9 @@ export const Quiz = ({ quizData, handleAnswer, handleShowResults }) => {
 
   useEffect(() => {
     setCurrentQuestion(0);
+    if (quizData.length > 0) {
+      setShuffledOptions(shuffleArray(quizData[0].options));
+    }
   }, [quizData]);
 
   if (!quizData || quizData.length === 0) {
@@ -36,7 +49,7 @@ export const Quiz = ({ quizData, handleAnswer, handleShowResults }) => {
           {question.questionText}
         </h2>
         <div className="flex flex-col items-center">
-          {question.options.map((option, index) => (
+          {shuffledOptions.map((option, index) => (
             <AnswerProposal
               key={index}
               onClick={() => handleNextQuestion(option.isCorrect)}
