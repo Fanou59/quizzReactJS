@@ -38,7 +38,7 @@ export const Quiz = ({ quizData, handleAnswer, handleShowResults }) => {
   return (
     <>
       <div className="mx-auto rounded-lg bg-white shadow p-4 flex-grow">
-        <h2 className="text-xl font-medium text-gray-900">
+        <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-gray-900">
           {question.questionText}
         </h2>
         <div className="flex flex-col items-center">
