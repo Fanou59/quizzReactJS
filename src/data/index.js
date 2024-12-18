@@ -1,14 +1,12 @@
-import { data } from "./data/data";
-import { secondeGuerre } from "./data/secondeGuerre";
-import { islam } from "./data/islam";
-import { nutrition } from "./data/nutrition";
-import { sommeil } from "./data/sommeil";
-import { sommeilV2 } from "./data/sommeilV2";
-import { santeMentale } from "./data/santeMentale";
-import { bienEtre } from "./data/bienEtre";
+import { secondeGuerre } from "./secondeGuerre";
+import { islam } from "./islam";
+import { nutrition } from "./nutrition";
+import { sommeil } from "./sommeil";
+import { sommeilV2 } from "./sommeilV2";
+import { santeMentale } from "./santeMentale";
+import { bienEtre } from "./bienEtre";
 
 export const themes = [
-  { name: "data", value: data },
   { name: "secondeGuerre", value: secondeGuerre },
   { name: "islam", value: islam },
   { name: "nutrition", value: nutrition },

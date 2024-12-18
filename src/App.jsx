@@ -1,29 +1,14 @@
 import { useState } from "react";
 import { Quiz } from "./components/Quiz";
-import { secondeGuerre } from "./data/secondeGuerre";
-import { islam } from "./data/islam";
-import { nutrition } from "./data/nutrition";
-import { sommeil } from "./data/sommeil";
-import { sommeilV2 } from "./data/sommeilV2";
-import { santeMentale } from "./data/santeMentale";
-import { bienEtre } from "./data/bienEtre";
 import { SelectTheme } from "./components/SelectTheme";
 import { Score } from "./components/Score";
+import themes from "./data/index";
 
 function App() {
   const [score, setScore] = useState(0);
   const [selectedTheme, setSelectedTheme] = useState("");
   const [showResults, setShowResults] = useState(false);
 
-  const themes = [
-    { name: "La seconde guerre", value: secondeGuerre },
-    { name: "Les piliers de l'Islam", value: islam },
-    { name: "Nutrition", value: nutrition },
-    { name: "Le sommeil", value: sommeil },
-    { name: "Le sommeil niv 2", value: sommeilV2 },
-    { name: "La santé mentale", value: santeMentale },
-    { name: "Le bien-être", value: bienEtre },
-  ];
   const handleSelect = (e) => {
     const selected = themes.find((theme) => theme.name === e.target.value);
     setSelectedTheme(selected.value);
