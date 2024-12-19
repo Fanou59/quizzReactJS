@@ -7,11 +7,11 @@ import { santeMentale } from "./santeMentale";
 import { bienEtre } from "./bienEtre";
 
 export const themes = [
-  { name: "secondeGuerre", value: secondeGuerre },
-  { name: "islam", value: islam },
+  { name: "La seconde Guerre", value: secondeGuerre },
+  { name: "L'Islam", value: islam },
   { name: "nutrition", value: nutrition },
   { name: "sommeil", value: sommeil },
-  { name: "sommeilV2", value: sommeilV2 },
-  { name: "santeMentale", value: santeMentale },
-  { name: "bienEtre", value: bienEtre },
+  { name: "sommeil niveau 2", value: sommeilV2 },
+  { name: "sante Mentale", value: santeMentale },
+  { name: "bien-Etre", value: bienEtre },
 ];
