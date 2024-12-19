@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Quiz } from "./components/Quiz";
 import { SelectTheme } from "./components/SelectTheme";
 import { Score } from "./components/Score";
-import themes from "./data/index";
+import { themes } from "./data/index";
 
 function App() {
   const [score, setScore] = useState(0);

@@ -5,23 +5,27 @@ import { shuffleArray } from "../utils/functions";
 export const Quiz = ({ quizData, handleAnswer, handleShowResults }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [shuffledOptions, setShuffledOptions] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleNextQuestion = (isCorrect) => {
     handleAnswer(isCorrect);
     const nextQuestion = currentQuestion + 1;
-
-    if (nextQuestion < quizData.length) {
-      setCurrentQuestion(nextQuestion);
-      setShuffledOptions(shuffleArray(quizData[nextQuestion].options));
-    } else {
-      handleShowResults();
-    }
+    setTimeout(() => {
+      if (nextQuestion < quizData.length) {
+        setCurrentQuestion(nextQuestion);
+        setShuffledOptions(shuffleArray(quizData[nextQuestion].options));
+        setSelectedOption(null);
+      } else {
+        handleShowResults();
+      }
+    }, 1000);
   };
 
   useEffect(() => {
     setCurrentQuestion(0);
     if (quizData.length > 0) {
       setShuffledOptions(shuffleArray(quizData[0].options));
+      setSelectedOption(null);
     }
   }, [quizData]);
 
@@ -41,15 +45,21 @@ export const Quiz = ({ quizData, handleAnswer, handleShowResults }) => {
         <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-gray-900">
           {question.questionText}
         </h2>
-        <div className="flex flex-col items-center">
-          {shuffledOptions.map((option, index) => (
-            <AnswerProposal
-              key={index}
-              onClick={() => handleNextQuestion(option.isCorrect)}
-            >
-              {option.text}
-            </AnswerProposal>
-          ))}
+        <div className="flex justify-center">
+          <div className="flex flex-col">
+            {shuffledOptions.map((option, index) => (
+              <AnswerProposal
+                key={index}
+                onChange={() => {
+                  setSelectedOption(index);
+                  handleNextQuestion(option.isCorrect);
+                }}
+                isSelected={selectedOption === index}
+              >
+                {option.text}
+              </AnswerProposal>
+            ))}
+          </div>
         </div>
       </div>
     </>
