@@ -30,7 +30,7 @@ export const Quiz = ({ quizData, handleAnswer, handleShowResults }) => {
   }, [quizData]);
 
   if (!quizData || quizData.length === 0) {
-    return <div>Loading...</div>;
+    return <div className="text-white">Loading...</div>;
   }
 
   const question = quizData[currentQuestion];
