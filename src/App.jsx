@@ -35,13 +35,10 @@ function App() {
       <h1 className="font-bold uppercase tracking-widest text-2xl text-white">
         Quizz Championship
       </h1>
-      <SelectTheme
-        themes={themes}
-        isSelected={handleSelect}
-      />
+      <SelectTheme themes={themes} isSelected={handleSelect} />
       {showResults ? (
         <div className="flex flex-col items-center gap-5">
-          {score >= 2 ? (
+          {score >= selectedTheme.length / 2 ? (
             <span className="text-green-500 text-3xl">Bravo ! 🎉</span>
           ) : (
             <span className="text-red-500 text-3xl">Dommage ! 😢</span>
