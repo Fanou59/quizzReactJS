@@ -7,6 +7,8 @@ export const Quiz = ({ quizData, handleAnswer, handleShowResults }) => {
   const [shuffledOptions, setShuffledOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
 
+  //todo Modifier la fonction handleNextQuestion pour qu'elle affiche une explication de la réponse. Un bouton NEXT sera ajouté pour passer à la question suivante afin de laisser le temps à l'utilsateur de lire l'explication.
+
   const handleNextQuestion = (isCorrect) => {
     handleAnswer(isCorrect);
     const nextQuestion = currentQuestion + 1;
@@ -39,6 +41,7 @@ export const Quiz = ({ quizData, handleAnswer, handleShowResults }) => {
     return <div>Loading...</div>;
   }
 
+  //todo Ajouter un bouton NEXT pour passer à la question suivante
   return (
     <>
       <div className="mx-auto rounded-lg bg-white shadow p-4 flex-grow">

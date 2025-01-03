@@ -1,3 +1,4 @@
+//todo ajouter une props className pour changer le style du label si la réponse est correcte ou incorrecte
 export const AnswerProposal = ({ children, onChange, isSelected }) => {
   return (
     <div className="flex items-center mt-1">
