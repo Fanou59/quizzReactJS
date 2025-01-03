@@ -7,6 +7,8 @@ export const premiereGuerre = [
       { id: "b", text: "1914", isCorrect: true },
       { id: "c", text: "1916", isCorrect: false },
     ],
+    explanation:
+      "La Première Guerre mondiale a commencé en 1914 avec l'assassinat de l'archiduc François-Ferdinand, ce qui a entraîné une série d'alliances militaires et politiques.",
   },
   {
     id: 2,
@@ -24,6 +26,8 @@ export const premiereGuerre = [
       },
       { id: "c", text: "La montée au pouvoir de Hitler", isCorrect: false },
     ],
+    explanation:
+      "L'assassinat de l'archiduc François-Ferdinand d'Autriche en juin 1914 à Sarajevo a entraîné une crise diplomatique qui a éclaté en guerre mondiale.",
   },
   {
     id: 3,
@@ -34,6 +38,8 @@ export const premiereGuerre = [
       { id: "b", text: "Le Royaume-Uni", isCorrect: true },
       { id: "c", text: "L'Italie", isCorrect: false },
     ],
+    explanation:
+      "Le Royaume-Uni était le principal allié de la France, formant avec la Russie la Triple-Entente contre les puissances centrales comme l'Allemagne.",
   },
   {
     id: 4,
@@ -44,6 +50,8 @@ export const premiereGuerre = [
       { id: "b", text: "Les Bleus", isCorrect: false },
       { id: "c", text: "Les Troupes", isCorrect: false },
     ],
+    explanation:
+      "Les soldats français étaient appelés 'Poilus' en raison de leur endurance et de leur aspect robuste, souvent associé à la difficulté des conditions de vie dans les tranchées.",
   },
   {
     id: 5,
@@ -54,6 +62,8 @@ export const premiereGuerre = [
       { id: "b", text: "La bataille de la Somme", isCorrect: false },
       { id: "c", text: "La bataille de Marne", isCorrect: false },
     ],
+    explanation:
+      "La bataille de Verdun a été l'une des plus longues et des plus sanglantes batailles de la Première Guerre mondiale, symbole de la détermination française.",
   },
   {
     id: 6,
@@ -63,6 +73,8 @@ export const premiereGuerre = [
       { id: "b", text: "1920", isCorrect: false },
       { id: "c", text: "1917", isCorrect: false },
     ],
+    explanation:
+      "La guerre a pris fin en 1918 avec l'armistice signé le 11 novembre, mettant un terme au conflit qui avait dévasté l'Europe.",
   },
   {
     id: 7,
@@ -72,6 +84,8 @@ export const premiereGuerre = [
       { id: "b", text: "Le traité de Brest-Litovsk", isCorrect: false },
       { id: "c", text: "Le traité de Paris", isCorrect: false },
     ],
+    explanation:
+      "Le traité de Versailles, signé en 1919, a officiellement mis fin à la guerre et imposé de lourdes conditions à l'Allemagne.",
   },
   {
     id: 8,
@@ -82,6 +96,8 @@ export const premiereGuerre = [
       { id: "b", text: "L'Allemagne", isCorrect: false },
       { id: "c", text: "L'Italie", isCorrect: false },
     ],
+    explanation:
+      "La Russie a connu deux révolutions en 1917, menant à la chute du tsar et à l'installation du régime bolchevique, qui a négocié la paix avec l'Allemagne.",
   },
   {
     id: 9,
@@ -92,6 +108,8 @@ export const premiereGuerre = [
       { id: "b", text: "Le nazisme", isCorrect: true },
       { id: "c", text: "Le libéralisme", isCorrect: false },
     ],
+    explanation:
+      "Le nazisme, porté par Adolf Hitler, a prospéré en Allemagne durant l'entre-deux-guerres, exploitant le ressentiment envers le traité de Versailles et la crise économique.",
   },
   {
     id: 10,
@@ -102,6 +120,8 @@ export const premiereGuerre = [
       { id: "b", text: "Lénine", isCorrect: false },
       { id: "c", text: "Trotski", isCorrect: false },
     ],
+    explanation:
+      "Staline a dirigé l'URSS après Lénine, consolidant un régime totalitaire et mettant en place des politiques économiques radicales comme les plans quinquennaux.",
   },
   {
     id: 11,
@@ -112,6 +132,8 @@ export const premiereGuerre = [
       { id: "b", text: "Le socialisme", isCorrect: false },
       { id: "c", text: "Le capitalisme", isCorrect: false },
     ],
+    explanation:
+      "Le fascisme est un régime autoritaire fondé par Mussolini, mettant l'accent sur le nationalisme, le militarisme et le contrôle de l'État.",
   },
   {
     id: 12,
@@ -125,6 +147,8 @@ export const premiereGuerre = [
       },
       { id: "c", text: "La séparation des pouvoirs", isCorrect: false },
     ],
+    explanation:
+      "Les régimes totalitaires se distinguent par un contrôle absolu de l'État sur tous les aspects de la vie publique et privée, éliminant toute opposition.",
   },
   {
     id: 13,
@@ -134,6 +158,8 @@ export const premiereGuerre = [
       { id: "b", text: "La crise de 1936", isCorrect: false },
       { id: "c", text: "La crise de 1919", isCorrect: false },
     ],
+    explanation:
+      "La crise de 1929, connue sous le nom de Grande Dépression, a provoqué une chute économique mondiale et une augmentation massive du chômage.",
   },
   {
     id: 14,
@@ -144,6 +170,8 @@ export const premiereGuerre = [
       { id: "b", text: "Étendre les empires coloniaux", isCorrect: false },
       { id: "c", text: "Renforcer les alliances militaires", isCorrect: false },
     ],
+    explanation:
+      "La Société des Nations, créée après la Première Guerre mondiale, avait pour mission principale de prévenir les conflits et de promouvoir la coopération internationale.",
   },
   {
     id: 15,
@@ -154,6 +182,8 @@ export const premiereGuerre = [
       { id: "b", text: "La guerre civile allemande", isCorrect: false },
       { id: "c", text: "La guerre civile italienne", isCorrect: false },
     ],
+    explanation:
+      "La guerre civile espagnole (1936-1939) a opposé les forces républicaines aux nationalistes dirigés par Franco, préfigurant les conflits de la Seconde Guerre mondiale.",
   },
   {
     id: 16,
@@ -167,6 +197,8 @@ export const premiereGuerre = [
       { id: "b", text: "Le putsch de Munich", isCorrect: false },
       { id: "c", text: "La nuit des Longs Couteaux", isCorrect: false },
     ],
+    explanation:
+      "Hitler est devenu chancelier en janvier 1933, ce qui lui a permis de consolider progressivement un pouvoir dictatorial en Allemagne.",
   },
   {
     id: 17,
@@ -176,6 +208,8 @@ export const premiereGuerre = [
       { id: "b", text: "La Pologne", isCorrect: false },
       { id: "c", text: "L'Allemagne", isCorrect: false },
     ],
+    explanation:
+      "L'URSS (Union des Républiques socialistes soviétiques) était un État communiste dirigé par la Russie après la révolution bolchevique de 1917.",
   },
   {
     id: 18,
@@ -190,6 +224,8 @@ export const premiereGuerre = [
       },
       { id: "c", text: "La révolution bolchevique", isCorrect: false },
     ],
+    explanation:
+      "L'incendie du Reichstag en 1933 a été utilisé par Hitler pour justifier des mesures répressives et consolider son pouvoir.",
   },
   {
     id: 19,
@@ -199,6 +235,8 @@ export const premiereGuerre = [
       { id: "b", text: "Le troc", isCorrect: false },
       { id: "c", text: "La production agricole", isCorrect: false },
     ],
+    explanation:
+      "La spéculation boursière a mené à un effondrement des marchés financiers, contribuant à la Grande Dépression de 1929.",
   },
   {
     id: 20,
@@ -209,5 +247,7 @@ export const premiereGuerre = [
       { id: "b", text: "La France", isCorrect: false },
       { id: "c", text: "L'Allemagne", isCorrect: false },
     ],
+    explanation:
+      "Le New Deal, initié par le président Roosevelt, a permis aux États-Unis de lutter contre les effets de la crise économique des années 1930 grâce à des réformes et des programmes d'investissement.",
   },
 ];
