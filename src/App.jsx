@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import { SelectTheme } from "./components/SelectTheme";
 import { Score } from "./components/Score";
 import { themes } from "./data/index";
@@ -7,75 +7,112 @@ import { DisplayQuestions } from "./components/DisplayQuestions";
 import { shuffleArray } from "./utils/functions";
 import { ExplanationDisplay } from "./components/ExplanationDisplay";
 
-function App() {
-  //todo: les useState seront gérés dans le reducer et l'initialState. Il ne restera que le state global.
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
-  const [selectedTheme, setSelectedTheme] = useState("");
-  const [showResults, setShowResults] = useState(false);
-  const [shuffledOptions, setShuffledOptions] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [isCorrect, setIsCorrect] = useState(null);
-  const [showExplanation, setShowExplanation] = useState(false);
+function reducer(state, action) {
+  switch (action.type) {
+    case "SELECT_THEME": {
+      return {
+        ...state,
+        selectedTheme: action.payload,
+        showResults: false,
+        score: 0,
+        currentQuestion: 0,
+        shuffledOptions: shuffleArray(action.payload[0].options),
+        selectedOption: null,
+        isCorrect: null,
+        showExplanation: false,
+      };
+    }
+    case "NEXT_QUESTION": {
+      return {
+        ...state,
+        currentQuestion: action.payload.nextQuestion,
+        shuffledOptions: shuffleArray(
+          state.selectedTheme[action.payload.nextQuestion].options
+        ),
+        selectedOption: null,
+        isCorrect: null,
+        showExplanation: false,
+      };
+    }
+    case "SELECT_OPTION": {
+      return {
+        ...state,
+        selectedOption: action.payload.selectedOption,
+      };
+    }
+    case "ANSWER": {
+      return {
+        ...state,
+        isCorrect: action.payload.isCorrect,
+        showExplanation: true,
+        score: action.payload.isCorrect ? state.score + 1 : state.score,
+      };
+    }
+    case "SHOW_RESULTS": {
+      return {
+        ...state,
+        showResults: true,
+      };
+    }
+    case "RESET_QUIZ": {
+      return {
+        ...state,
+        showResults: false,
+        score: 0,
+        currentQuestion: 0,
+        selectedOption: null,
+        isCorrect: null,
+        showExplanation: false,
+      };
+    }
+    default:
+      return state;
+  }
+}
 
-  // todo: logique à intégrer dans le reducer handleSelect, handleNextQuestion, handleAnswer, resetQuiz
-  // logique de selection du theme
+const initialState = {
+  currentQuestion: 0,
+  score: 0,
+  selectedTheme: "",
+  showResults: false,
+  shuffledOptions: [],
+  selectedOption: null,
+  isCorrect: null,
+  showExplanation: false,
+};
+
+function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   const handleSelect = (e) => {
     const selected = themes.find((theme) => theme.name === e.target.value);
-    setSelectedTheme(selected.value);
-    setShowResults(false);
-    setScore(0);
-    setCurrentQuestion(0);
-    setShuffledOptions(shuffleArray(selected.value[0].options));
-    setSelectedOption(null);
-    setIsCorrect(null);
-    setShowExplanation(false);
+    dispatch({
+      type: "SELECT_THEME",
+      payload: selected.value,
+    });
   };
 
-  //todo assembler handleNextQuestion et handleAnswer en une seule fonction
-  // logique de gestion des questions
-  const handleNextQuestion = (isCorrect) => {
-    handleAnswer(isCorrect);
-    setIsCorrect(isCorrect);
-    setShowExplanation(true);
-  };
-
-  // logique de gestion des reponses
-  const handleAnswer = (isCorrect) => {
-    if (isCorrect) {
-      setScore((prevScore) => prevScore + 1);
-    }
-  };
-
-  //logique de gestion de la fin du quiz, cette fonction n'est pas utilisée
-  const handleShowResults = () => {
-    setShowResults(true);
-  };
-
-  // logique de gestion de la question suivante
-  const handleNext = () => {
-    const nextQuestion = currentQuestion + 1;
-    setShowExplanation(false);
-    if (nextQuestion < selectedTheme.length) {
-      setCurrentQuestion(nextQuestion);
-      setShuffledOptions(shuffleArray(selectedTheme[nextQuestion].options));
-      setSelectedOption(null);
-      setIsCorrect(null);
+  const handleNextQuestion = () => {
+    const nextQuestion = state.currentQuestion + 1;
+    if (nextQuestion < state.selectedTheme.length) {
+      dispatch({
+        type: "NEXT_QUESTION",
+        payload: { nextQuestion },
+      });
     } else {
-      handleShowResults();
+      dispatch({ type: "SHOW_RESULTS" });
     }
   };
 
-  // logique de reset du quiz
-  const resetQuiz = () => {
-    setShowResults(false);
-    setScore(0);
-    setCurrentQuestion(0);
-    setSelectedOption(null);
-    setIsCorrect(null);
-    setShowExplanation(false);
+  const handleAnswer = (isCorrect) => {
+    dispatch({ type: "ANSWER", payload: { isCorrect } });
   };
-  const question = selectedTheme[currentQuestion];
+
+  const resetQuiz = () => {
+    dispatch({ type: "RESET_QUIZ" });
+  };
+
+  const question = state.selectedTheme[state.currentQuestion];
 
   return (
     <div className="flex flex-col items-center gap-5">
@@ -83,9 +120,9 @@ function App() {
         Quizz Championship
       </h1>
       <SelectTheme themes={themes} isSelected={handleSelect} />
-      {showResults ? (
+      {state.showResults ? (
         <div className="flex flex-col items-center gap-5">
-          {score >= selectedTheme.length / 2 ? (
+          {state.score >= state.selectedTheme.length / 2 ? (
             <span className="text-green-500 text-3xl">Bravo ! 🎉</span>
           ) : (
             <span className="text-red-500 text-3xl">Dommage ! 😢</span>
@@ -97,22 +134,25 @@ function App() {
           <DisplayQuestions
             question={question}
             onChange={(isCorrect, index) => {
-              handleNextQuestion(isCorrect);
-              setSelectedOption(index);
+              handleAnswer(isCorrect);
+              dispatch({
+                type: "SELECT_OPTION",
+                payload: { selectedOption: index },
+              });
             }}
-            isSelected={selectedOption}
-            shuffledOptions={shuffledOptions}
-            isCorrect={isCorrect}
+            isSelected={state.selectedOption}
+            shuffledOptions={state.shuffledOptions}
+            isCorrect={state.isCorrect}
           />
-          {showExplanation && (
+          {state.showExplanation && question && (
             <ExplanationDisplay
               explanation={question.explanation}
-              onNext={handleNext}
+              onNext={handleNextQuestion}
             />
           )}
         </>
       )}
-      <Score score={score} quizData={selectedTheme.length} />
+      <Score score={state.score} quizData={state.selectedTheme.length} />
     </div>
   );
 }
