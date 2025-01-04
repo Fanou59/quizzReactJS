@@ -8,6 +8,7 @@ import { shuffleArray } from "./utils/functions";
 import { ExplanationDisplay } from "./components/ExplanationDisplay";
 
 function App() {
+  //todo: les useState seront gérés dans le reducer et l'initialState. Il ne restera que le state global.
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedTheme, setSelectedTheme] = useState("");
@@ -17,6 +18,8 @@ function App() {
   const [isCorrect, setIsCorrect] = useState(null);
   const [showExplanation, setShowExplanation] = useState(false);
 
+  // todo: logique à intégrer dans le reducer handleSelect, handleNextQuestion, handleAnswer, resetQuiz
+  // logique de selection du theme
   const handleSelect = (e) => {
     const selected = themes.find((theme) => theme.name === e.target.value);
     setSelectedTheme(selected.value);
@@ -28,20 +31,28 @@ function App() {
     setIsCorrect(null);
     setShowExplanation(false);
   };
+
+  //todo assembler handleNextQuestion et handleAnswer en une seule fonction
+  // logique de gestion des questions
   const handleNextQuestion = (isCorrect) => {
     handleAnswer(isCorrect);
     setIsCorrect(isCorrect);
     setShowExplanation(true);
   };
 
+  // logique de gestion des reponses
   const handleAnswer = (isCorrect) => {
     if (isCorrect) {
       setScore((prevScore) => prevScore + 1);
     }
   };
+
+  //logique de gestion de la fin du quiz, cette fonction n'est pas utilisée
   const handleShowResults = () => {
     setShowResults(true);
   };
+
+  // logique de gestion de la question suivante
   const handleNext = () => {
     const nextQuestion = currentQuestion + 1;
     setShowExplanation(false);
@@ -55,6 +66,7 @@ function App() {
     }
   };
 
+  // logique de reset du quiz
   const resetQuiz = () => {
     setShowResults(false);
     setScore(0);
