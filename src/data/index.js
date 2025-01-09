@@ -4,6 +4,7 @@ import { dynamiqueTerritoriales } from "./dynamiqueTerritoriales";
 import { revisionGeographie } from "./revisionGeographie";
 import { vivant } from "./questions_vivant_organisation";
 import { interactions } from "./questions_interactions_milieux";
+import { corpsHumain } from "./questions_corps_humain_sante";
 
 export const themes = [
   { name: "La Première Guerre", value: premiereGuerre },
@@ -15,4 +16,5 @@ export const themes = [
     name: "Interactions entre les êtres vivants et leur milieu",
     value: interactions,
   },
+  { name: "Le corps humain et la santé", value: corpsHumain },
 ];
