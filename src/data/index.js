@@ -5,6 +5,7 @@ import { revisionGeographie } from "./revisionGeographie";
 import { vivant } from "./questions_vivant_organisation";
 import { interactions } from "./questions_interactions_milieux";
 import { corpsHumain } from "./questions_corps_humain_sante";
+import { environnement } from "./questions_ressources_environnement";
 
 export const themes = [
   { name: "La Première Guerre", value: premiereGuerre },
@@ -17,4 +18,5 @@ export const themes = [
     value: interactions,
   },
   { name: "Le corps humain et la santé", value: corpsHumain },
+  { name: "Ressources et environnement", value: environnement },
 ];
