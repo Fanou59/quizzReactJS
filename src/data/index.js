@@ -3,6 +3,7 @@ import { revisionHistoire } from "./revisionHistoire";
 import { dynamiqueTerritoriales } from "./dynamiqueTerritoriales";
 import { revisionGeographie } from "./revisionGeographie";
 import { vivant } from "./questions_vivant_organisation";
+import { interactions } from "./questions_interactions_milieux";
 
 export const themes = [
   { name: "La Première Guerre", value: premiereGuerre },
@@ -10,4 +11,8 @@ export const themes = [
   { name: "Dynamique territoriales", value: dynamiqueTerritoriales },
   { name: "Révision géographie 6è > 4è", value: revisionGeographie },
   { name: "Le vivant et son organisation", value: vivant },
+  {
+    name: "Interactions entre les êtres vivants et leur milieu",
+    value: interactions,
+  },
 ];
