@@ -10,29 +10,41 @@ import { ExplanationDisplay } from "./components/ExplanationDisplay";
 function reducer(state, action) {
   switch (action.type) {
     case "SELECT_THEME": {
+      const selected = themes.find(
+        (theme) => theme.name === action.payload.target.value
+      );
+
       return {
         ...state,
-        selectedTheme: action.payload,
+        selectedTheme: selected.value,
         showResults: false,
         score: 0,
         currentQuestion: 0,
-        shuffledOptions: shuffleArray(action.payload[0].options),
+        shuffledOptions: shuffleArray(selected.value[0].options),
         selectedOption: null,
         isCorrect: null,
         showExplanation: false,
       };
     }
     case "NEXT_QUESTION": {
-      return {
-        ...state,
-        currentQuestion: action.payload.nextQuestion,
-        shuffledOptions: shuffleArray(
-          state.selectedTheme[action.payload.nextQuestion].options
-        ),
-        selectedOption: null,
-        isCorrect: null,
-        showExplanation: false,
-      };
+      const nextQuestion = state.currentQuestion + 1;
+      if (nextQuestion < state.selectedTheme.length) {
+        return {
+          ...state,
+          currentQuestion: nextQuestion,
+          shuffledOptions: shuffleArray(
+            state.selectedTheme[nextQuestion].options
+          ),
+          selectedOption: null,
+          isCorrect: null,
+          showExplanation: false,
+        };
+      } else {
+        return {
+          ...state,
+          showResults: true,
+        };
+      }
     }
     case "SELECT_OPTION": {
       return {
@@ -85,23 +97,14 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSelect = (e) => {
-    const selected = themes.find((theme) => theme.name === e.target.value);
     dispatch({
       type: "SELECT_THEME",
-      payload: selected.value,
+      payload: e,
     });
   };
 
   const handleNextQuestion = () => {
-    const nextQuestion = state.currentQuestion + 1;
-    if (nextQuestion < state.selectedTheme.length) {
-      dispatch({
-        type: "NEXT_QUESTION",
-        payload: { nextQuestion },
-      });
-    } else {
-      dispatch({ type: "SHOW_RESULTS" });
-    }
+    dispatch({ type: "NEXT_QUESTION" });
   };
 
   const handleAnswer = (isCorrect) => {
