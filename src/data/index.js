@@ -7,6 +7,7 @@ import { interactions } from "./questions_interactions_milieux";
 import { corpsHumain } from "./questions_corps_humain_sante";
 import { environnement } from "./questions_ressources_environnement";
 import { metauxOQuotidien } from "./metauxEtQuotidien";
+import { origineMatiere } from "./origineMatiere";
 
 export const themes = [
   { name: "La Première Guerre", value: premiereGuerre },
@@ -21,4 +22,5 @@ export const themes = [
   { name: "Le corps humain et la santé", value: corpsHumain },
   { name: "Ressources et environnement", value: environnement },
   { name: "Métaux et quotidien", value: metauxOQuotidien },
+  { name: "Origine de la matière", value: origineMatiere },
 ];
