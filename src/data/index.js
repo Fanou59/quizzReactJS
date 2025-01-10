@@ -9,6 +9,7 @@ import { environnement } from "./questions_ressources_environnement";
 import { metauxOQuotidien } from "./metauxEtQuotidien";
 import { origineMatiere } from "./origineMatiere";
 import { courantElectriques } from "./courantElectrique";
+import { reconnaissanceIons } from "./reconnaissanceIons";
 
 export const themes = [
   { name: "La Première Guerre", value: premiereGuerre },
@@ -25,4 +26,5 @@ export const themes = [
   { name: "Métaux et quotidien", value: metauxOQuotidien },
   { name: "Origine de la matière", value: origineMatiere },
   { name: "Courant électrique", value: courantElectriques },
+  { name: "Reconnaissance des ions", value: reconnaissanceIons },
 ];
