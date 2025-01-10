@@ -1,4 +1,4 @@
-export const SelectTheme = ({ themes, isSelected }) => {
+export const SelectTheme = ({ themes, isSelected, children }) => {
   return (
     <select
       className="select select-info w-full max-w-xs capitalize"
@@ -6,7 +6,7 @@ export const SelectTheme = ({ themes, isSelected }) => {
       defaultValue=""
     >
       <option value="" disabled>
-        -- Sélectionner un thème --
+        -- Sélectionner {children} --
       </option>
       {themes.map((theme, index) => (
         <option key={index} value={theme.name}>

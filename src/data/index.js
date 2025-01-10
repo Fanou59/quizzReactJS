@@ -12,19 +12,56 @@ import { courantElectriques } from "./courantElectrique";
 import { reconnaissanceIons } from "./reconnaissanceIons";
 
 export const themes = [
-  { name: "La Première Guerre", value: premiereGuerre },
-  { name: "Révision histoire 6è > 4è", value: revisionHistoire },
-  { name: "Dynamique territoriales", value: dynamiqueTerritoriales },
-  { name: "Révision géographie 6è > 4è", value: revisionGeographie },
-  { name: "Le vivant et son organisation", value: vivant },
+  { discipline: "Histoire", name: "La Première Guerre", value: premiereGuerre },
   {
+    discipline: "Histoire",
+    name: "Révision histoire 6è > 4è",
+    value: revisionHistoire,
+  },
+  {
+    discipline: "Géographie",
+    name: "Dynamique territoriales",
+    value: dynamiqueTerritoriales,
+  },
+  {
+    discipline: "Géographie",
+    name: "Révision géographie 6è > 4è",
+    value: revisionGeographie,
+  },
+  { discipline: "SVT", name: "Le vivant et son organisation", value: vivant },
+  {
+    discipline: "SVT",
     name: "Interactions entre les êtres vivants et leur milieu",
     value: interactions,
   },
-  { name: "Le corps humain et la santé", value: corpsHumain },
-  { name: "Ressources et environnement", value: environnement },
-  { name: "Métaux et quotidien", value: metauxOQuotidien },
-  { name: "Origine de la matière", value: origineMatiere },
-  { name: "Courant électrique", value: courantElectriques },
-  { name: "Reconnaissance des ions", value: reconnaissanceIons },
+  {
+    discipline: "SVT",
+    name: "Le corps humain et la santé",
+    value: corpsHumain,
+  },
+  {
+    discipline: "SVT",
+    name: "Ressources et environnement",
+    value: environnement,
+  },
+  {
+    discipline: "Chimie",
+    name: "Métaux et quotidien",
+    value: metauxOQuotidien,
+  },
+  {
+    discipline: "Chimie",
+    name: "Origine de la matière",
+    value: origineMatiere,
+  },
+  {
+    discipline: "Chimie",
+    name: "Courant électrique",
+    value: courantElectriques,
+  },
+  {
+    discipline: "Chimie",
+    name: "Reconnaissance des ions",
+    value: reconnaissanceIons,
+  },
 ];

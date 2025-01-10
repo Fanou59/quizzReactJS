@@ -6,12 +6,13 @@ import { Button } from "./components/Button";
 import { DisplayQuestions } from "./components/DisplayQuestions";
 import { shuffleArray } from "./utils/functions";
 import { ExplanationDisplay } from "./components/ExplanationDisplay";
+import { disciplines } from "./data/disciplines";
 
 function reducer(state, action) {
   switch (action.type) {
     case "SELECT_THEME": {
-      const selected = themes.find(
-        (theme) => theme.name === action.payload.target.value
+      const selected = state.filteredThemes.find(
+        (theme) => theme.name === action.payload.event.target.value
       );
 
       return {
@@ -24,6 +25,16 @@ function reducer(state, action) {
         selectedOption: null,
         isCorrect: null,
         showExplanation: false,
+      };
+    }
+    case "SELECT_DISCIPLINE": {
+      const filteredThemes = action.payload.themes.filter(
+        (theme) => theme.discipline === action.payload.discipline
+      );
+      return {
+        ...state,
+        selectedDiscipline: action.payload.discipline,
+        filteredThemes,
       };
     }
     case "NEXT_QUESTION": {
@@ -86,6 +97,7 @@ const initialState = {
   currentQuestion: 0,
   score: 0,
   selectedTheme: "",
+  selectedDiscipline: "",
   showResults: false,
   shuffledOptions: [],
   selectedOption: null,
@@ -99,7 +111,14 @@ function App() {
   const handleSelect = (e) => {
     dispatch({
       type: "SELECT_THEME",
-      payload: e,
+      payload: { event: e, themes },
+    });
+  };
+
+  const handleSelectDiscipline = (e) => {
+    dispatch({
+      type: "SELECT_DISCIPLINE",
+      payload: { discipline: e.target.value, themes },
     });
   };
 
@@ -122,7 +141,15 @@ function App() {
       <h1 className="font-bold uppercase tracking-widest text-2xl text-white">
         Quizz Championship
       </h1>
-      <SelectTheme themes={themes} isSelected={handleSelect} />
+      <SelectTheme themes={disciplines} isSelected={handleSelectDiscipline}>
+        une discipline
+      </SelectTheme>
+      {state.selectedDiscipline && (
+        <SelectTheme themes={state.filteredThemes} isSelected={handleSelect}>
+          un thème
+        </SelectTheme>
+      )}
+
       {state.showResults ? (
         <div className="flex flex-col items-center gap-5">
           {state.score >= state.selectedTheme.length / 2 ? (
