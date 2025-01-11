@@ -52,8 +52,9 @@ function App() {
   };
 
   const question = state.selectedTheme[state.currentQuestion];
-  const progressValue = state.currentQuestion + 1;
-
+  const progressValue = state.selectedTheme.length
+    ? ((state.currentQuestion + 1) / state.selectedTheme.length) * 100
+    : 0;
   return (
     <div className="flex flex-col items-center gap-5">
       <h1 className="font-bold uppercase tracking-widest text-2xl text-white">
@@ -100,9 +101,9 @@ function App() {
           )}
         </>
       )}
-      {state.selectedTheme && (
-        <progress value={progressValue} max={state.selectedTheme.length} />
-      )}
+
+      {/* <progress value={progressValue} max={state.selectedTheme.length} /> */}
+      {state.selectedTheme && <ProgressBar value={progressValue} max={100} />}
 
       <Score score={state.score} quizData={state.selectedTheme.length} />
     </div>

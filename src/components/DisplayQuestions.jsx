@@ -17,19 +17,22 @@ export const DisplayQuestions = ({
       <div className="flex justify-center">
         <div className="flex flex-col">
           {shuffledOptions.map((option, index) => (
-            <div
-              className={`flex items-center mt-1 rounded-lg p-1 ${isSelected === index && !isCorrect ? "bg-red-300" : ""} ${isCorrect && option.isCorrect ? "bg-lime-400" : ""}`}
+            <label
               key={index}
+              htmlFor={`option-${index}`}
+              className={`flex items-center mt-1 rounded-lg p-1 cursor-pointer text-gray-500 ${
+                isSelected === index && !isCorrect ? "bg-red-300" : ""
+              } ${isCorrect && option.isCorrect ? "bg-lime-400" : ""}`}
             >
               <input
+                id={`option-${index}`}
                 type="radio"
-                className="radio"
+                className="radio radio-primary"
                 onChange={() => onChange(option.isCorrect, index)}
                 checked={isSelected === index}
-                readOnly
               />
-              <label className="ml-2 text-gray-500">{option.text}</label>
-            </div>
+              <span className="ml-2">{option.text}</span>
+            </label>
           ))}
         </div>
       </div>

@@ -75,9 +75,13 @@ export function reducer(state, action) {
         showResults: false,
         score: 0,
         currentQuestion: 0,
+        shuffledOptions: [],
         selectedOption: null,
         isCorrect: null,
         showExplanation: false,
+        selectedTheme: "",
+        selectedDiscipline: "",
+        filteredThemes: [],
       };
     }
     default:
