@@ -55,6 +55,9 @@ function App() {
   const progressValue = state.selectedTheme.length
     ? ((state.currentQuestion + 1) / state.selectedTheme.length) * 100
     : 0;
+  const scorePercentage = state.selectedTheme.length
+    ? (state.score / state.selectedTheme.length) * 100
+    : 0;
   return (
     <div className="flex flex-col items-center gap-5">
       <h1 className="font-bold uppercase tracking-widest text-2xl text-white">
@@ -71,10 +74,18 @@ function App() {
 
       {state.showResults ? (
         <div className="flex flex-col items-center gap-5">
-          {state.score >= state.selectedTheme.length / 2 ? (
-            <span className="text-green-500 text-3xl">Bravo ! 🎉</span>
+          {scorePercentage >= 65 ? (
+            <span className="text-green-500 text-3xl">
+              Bravo, je pense que tu maîtrises le sujet ! 🎉
+            </span>
+          ) : scorePercentage >= 50 ? (
+            <span className="text-orange-500 text-3xl">
+              Si tu refaisais le quiz ? 😊
+            </span>
           ) : (
-            <span className="text-red-500 text-3xl">Dommage ! 😢</span>
+            <span className="text-red-500 text-3xl">
+              Retravailles ton cours avant de refaire le quiz 😢
+            </span>
           )}
           <Button onClick={resetQuiz}>Retry ?</Button>
         </div>
@@ -102,8 +113,9 @@ function App() {
         </>
       )}
 
-      {/* <progress value={progressValue} max={state.selectedTheme.length} /> */}
-      {state.selectedTheme && <ProgressBar value={progressValue} max={100} />}
+      {state.selectedTheme && !state.showResults && (
+        <ProgressBar value={progressValue} />
+      )}
 
       <Score score={state.score} quizData={state.selectedTheme.length} />
     </div>
