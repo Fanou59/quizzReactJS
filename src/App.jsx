@@ -4,11 +4,12 @@ import { Score } from "./components/Score";
 import { themes } from "./data/index";
 import { Button } from "./components/Button";
 import { DisplayQuestions } from "./components/DisplayQuestions";
-import { shuffleArray } from "./utils/functions";
 import { ExplanationDisplay } from "./components/ExplanationDisplay";
 import { disciplines } from "./data/disciplines";
 import { ProgressBar } from "./components/ProgressBar";
 import { reducer } from "./utils/reducer";
+import { ContactUs } from "./components/ContactUs";
+import { LeaveMeAFeedBack } from "./components/LeaveMeAFeedBack";
 
 const initialState = {
   currentQuestion: 0,
@@ -20,6 +21,8 @@ const initialState = {
   selectedOption: null,
   isCorrect: null,
   showExplanation: false,
+  feedback: false,
+  successMessage: false,
 };
 
 function App() {
@@ -50,6 +53,17 @@ function App() {
   const resetQuiz = () => {
     dispatch({ type: "RESET_QUIZ" });
   };
+  const handleFeedBack = () => {
+    dispatch({ type: "FEEDBACK" });
+  };
+
+  const setSuccessMessage = (value) => {
+    dispatch({ type: "SUCCESS_MESSAGE", payload: value });
+    setTimeout(() => {
+      dispatch({ type: "FEEDBACK", payload: false });
+      dispatch({ type: "SUCCESS_MESSAGE", payload: false });
+    }, 2000); // Délai de 3 secondes avant de cacher le composant
+  };
 
   const question = state.selectedTheme[state.currentQuestion];
   const progressValue = state.selectedTheme.length
@@ -59,66 +73,75 @@ function App() {
     ? (state.score / state.selectedTheme.length) * 100
     : 0;
   return (
-    <div className="flex flex-col items-center gap-5">
-      <h1 className="font-bold uppercase tracking-widest text-2xl text-white">
-        Quizz Championship
-      </h1>
-      <SelectTheme themes={disciplines} isSelected={handleSelectDiscipline}>
-        une discipline
-      </SelectTheme>
-      {state.selectedDiscipline && (
-        <SelectTheme themes={state.filteredThemes} isSelected={handleSelect}>
-          un thème
+    <>
+      <div className="flex flex-col items-center gap-5">
+        <h1 className="font-bold uppercase tracking-widest text-2xl text-white">
+          Quizz Championship
+        </h1>
+        <SelectTheme themes={disciplines} isSelected={handleSelectDiscipline}>
+          une discipline
         </SelectTheme>
-      )}
+        {state.selectedDiscipline && (
+          <SelectTheme themes={state.filteredThemes} isSelected={handleSelect}>
+            un thème
+          </SelectTheme>
+        )}
 
-      {state.showResults ? (
-        <div className="flex flex-col items-center gap-5">
-          {scorePercentage >= 65 ? (
-            <span className="text-green-500 text-3xl">
-              Bravo, je pense que tu maîtrises le sujet ! 🎉
-            </span>
-          ) : scorePercentage >= 50 ? (
-            <span className="text-orange-500 text-3xl">
-              Si tu refaisais le quiz ? 😊
-            </span>
-          ) : (
-            <span className="text-red-500 text-3xl">
-              Retravailles ton cours avant de refaire le quiz 😢
-            </span>
-          )}
-          <Button onClick={resetQuiz}>Retry ?</Button>
-        </div>
-      ) : (
-        <>
-          <DisplayQuestions
-            question={question}
-            onChange={(isCorrect, index) => {
-              handleAnswer(isCorrect);
-              dispatch({
-                type: "SELECT_OPTION",
-                payload: { selectedOption: index },
-              });
-            }}
-            isSelected={state.selectedOption}
-            shuffledOptions={state.shuffledOptions}
-            isCorrect={state.isCorrect}
-          />
-          {state.showExplanation && question && (
-            <ExplanationDisplay
-              explanation={question.explanation}
-              onNext={handleNextQuestion}
+        {state.showResults ? (
+          <div className="flex flex-col items-center gap-5">
+            {scorePercentage >= 65 ? (
+              <span className="text-green-500 text-3xl">
+                Bravo, je pense que tu maîtrises le sujet ! 🎉
+              </span>
+            ) : scorePercentage >= 50 ? (
+              <span className="text-orange-500 text-3xl">
+                Si tu refaisais le quiz ? 😊
+              </span>
+            ) : (
+              <span className="text-red-500 text-3xl">
+                Retravailles ton cours avant de refaire le quiz 😢
+              </span>
+            )}
+            <Button onClick={resetQuiz}>Retry ?</Button>
+          </div>
+        ) : (
+          <>
+            <DisplayQuestions
+              question={question}
+              onChange={(isCorrect, index) => {
+                handleAnswer(isCorrect);
+                dispatch({
+                  type: "SELECT_OPTION",
+                  payload: { selectedOption: index },
+                });
+              }}
+              isSelected={state.selectedOption}
+              shuffledOptions={state.shuffledOptions}
+              isCorrect={state.isCorrect}
             />
-          )}
-        </>
-      )}
+            {state.showExplanation && question && (
+              <ExplanationDisplay
+                explanation={question.explanation}
+                onNext={handleNextQuestion}
+              />
+            )}
+          </>
+        )}
 
-      {state.selectedTheme && !state.showResults && (
-        <ProgressBar value={progressValue} />
-      )}
+        {state.selectedTheme && !state.showResults && (
+          <ProgressBar value={progressValue} />
+        )}
 
-      <Score score={state.score} quizData={state.selectedTheme.length} />
-    </div>
+        <Score score={state.score} quizData={state.selectedTheme.length} />
+        <LeaveMeAFeedBack handleClick={handleFeedBack} />
+        {state.feedback && <ContactUs SuccessMessage={setSuccessMessage} />}
+        {state.successMessage && (
+          <div className="text-green-500 mt-4">
+            Votre message a été envoyé avec succès !
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

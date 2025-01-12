@@ -84,6 +84,18 @@ export function reducer(state, action) {
         filteredThemes: [],
       };
     }
+    case "FEEDBACK": {
+      return {
+        ...state,
+        feedback: !state.feedback,
+      };
+    }
+    case "SUCCESS_MESSAGE": {
+      return {
+        ...state,
+        successMessage: action.payload,
+      };
+    }
     default:
       return state;
   }
