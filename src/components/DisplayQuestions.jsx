@@ -30,6 +30,7 @@ export const DisplayQuestions = ({
                 className="radio radio-primary"
                 onChange={() => onChange(option.isCorrect, index)}
                 checked={isSelected === index}
+                disabled={isSelected !== null}
               />
               <span className="ml-2">{option.text}</span>
             </label>
