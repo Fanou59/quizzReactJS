@@ -23,6 +23,7 @@ const initialState = {
   showExplanation: false,
   feedback: false,
   successMessage: false,
+  isButtonDisabled: false,
 };
 
 function App() {
@@ -59,9 +60,11 @@ function App() {
 
   const setSuccessMessage = (value) => {
     dispatch({ type: "SUCCESS_MESSAGE", payload: value });
+    dispatch({ type: "DISABLE_BUTTON", payload: true });
     setTimeout(() => {
       dispatch({ type: "FEEDBACK", payload: false });
       dispatch({ type: "SUCCESS_MESSAGE", payload: false });
+      dispatch({ type: "DISABLE_BUTTON", payload: false });
     }, 2000); // Délai de 2 secondes avant de cacher le composant
   };
 

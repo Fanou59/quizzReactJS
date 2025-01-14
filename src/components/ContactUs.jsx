@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 
-export const ContactUs = ({ SuccessMessage }) => {
+export const ContactUs = ({ SuccessMessage, isButtonDisabled }) => {
   const form = useRef();
   // todo: gérer un état de declenchement de l'envoi du mail null, true or false
 
@@ -52,7 +52,8 @@ export const ContactUs = ({ SuccessMessage }) => {
       <input
         type="submit"
         value="Send"
-        className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        className={`text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ${isButtonDisabled ? "opacity-70 cursor-not-allowed" : "cursor-pointer"}`}
+        disabled={isButtonDisabled}
       />
     </form>
   );

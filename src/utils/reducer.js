@@ -96,6 +96,12 @@ export function reducer(state, action) {
         successMessage: action.payload,
       };
     }
+    case "DISABLE_BUTTON": {
+      return {
+        ...state,
+        isButtonDisabled: action.payload,
+      };
+    }
     default:
       return state;
   }
