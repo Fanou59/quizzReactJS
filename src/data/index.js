@@ -10,6 +10,7 @@ import { metauxOQuotidien } from "./metauxEtQuotidien";
 import { origineMatiere } from "./origineMatiere";
 import { courantElectriques } from "./courantElectrique";
 import { reconnaissanceIons } from "./reconnaissanceIons";
+import { tourDuMonde } from "./tourDuMonde";
 
 export const themes = [
   { discipline: "Histoire", name: "La Première Guerre", value: premiereGuerre },
@@ -63,5 +64,10 @@ export const themes = [
     discipline: "Chimie",
     name: "Reconnaissance des ions",
     value: reconnaissanceIons,
+  },
+  {
+    discipline: "Livres",
+    name: "Le tour du monde en 80 jours",
+    value: tourDuMonde,
   },
 ];
