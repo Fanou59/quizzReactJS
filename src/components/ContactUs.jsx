@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 
 export const ContactUs = ({ SuccessMessage }) => {
   const form = useRef();
+  // todo: gérer un état de declenchement de l'envoi du mail null, true or false
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -21,6 +22,8 @@ export const ContactUs = ({ SuccessMessage }) => {
         }
       );
   };
+
+  // todo: mise en place d'un useEffect pour gérer l'affichage du message de succès
 
   return (
     <form

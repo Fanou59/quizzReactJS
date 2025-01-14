@@ -62,7 +62,7 @@ function App() {
     setTimeout(() => {
       dispatch({ type: "FEEDBACK", payload: false });
       dispatch({ type: "SUCCESS_MESSAGE", payload: false });
-    }, 2000); // Délai de 3 secondes avant de cacher le composant
+    }, 2000); // Délai de 2 secondes avant de cacher le composant
   };
 
   const question = state.selectedTheme[state.currentQuestion];
