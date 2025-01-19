@@ -21,7 +21,7 @@ export const themes = [
     value: revisionHistoire,
   },
   {
-    disciplie: "Histoire",
+    discipline: "Histoire",
     name: "La Seigneurie",
     value: laSeigneurie,
   },
