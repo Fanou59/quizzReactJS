@@ -69,12 +69,19 @@ function App() {
   };
 
   const question = state.selectedTheme[state.currentQuestion];
+
   const progressValue = state.selectedTheme.length
-    ? ((state.currentQuestion + 1) / state.selectedTheme.length) * 100
+    ? (
+        ((state.currentQuestion + 1) / state.selectedTheme.length) *
+        100
+      ).toFixed(0)
     : 0;
+
   const scorePercentage = state.selectedTheme.length
     ? (state.score / state.selectedTheme.length) * 100
     : 0;
+
+  console.log("currentQuestion : ", state.currentQuestion);
   return (
     <>
       <div className="flex flex-col items-center gap-5">
