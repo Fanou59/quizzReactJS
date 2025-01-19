@@ -11,7 +11,7 @@ import { origineMatiere } from "./origineMatiere";
 import { courantElectriques } from "./courantElectrique";
 import { reconnaissanceIons } from "./reconnaissanceIons";
 import { tourDuMonde } from "./tourDuMonde";
-import { laSeigneurie } from "./laSeigneurie";
+import { laSeigneurie } from "./seigneurie";
 
 export const themes = [
   { discipline: "Histoire", name: "La Première Guerre", value: premiereGuerre },
