@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import { SelectTheme } from "./components/SelectTheme";
 import { Score } from "./components/Score";
 import { themes } from "./data/index";
-import { Button } from "./components/Button";
+import { AppButton } from "./components/AppButton";
 import { DisplayQuestions } from "./components/DisplayQuestions";
 import { ExplanationDisplay } from "./components/ExplanationDisplay";
 import { disciplines } from "./data/disciplines";
@@ -112,7 +112,7 @@ function App() {
                 Retravailles ton cours avant de refaire le quiz 😢
               </span>
             )}
-            <Button onClick={resetQuiz}>Retry ?</Button>
+            <AppButton onClick={resetQuiz}>Retry ?</AppButton>
           </div>
         ) : (
           <>

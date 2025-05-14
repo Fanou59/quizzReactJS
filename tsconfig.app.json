@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    // ... tes autres options de compilation ...
+    "jsx": "react-jsx", // Ajoute cette ligne
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+    // ... tes autres options de compilation ...
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
