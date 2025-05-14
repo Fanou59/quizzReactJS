@@ -8,8 +8,9 @@ export default withMT({
   theme: {
     extend: {},
   },
-  plugins: [typography, daisyui],
-  daisyui: {
-    themes: ["synthwave"],
-  },
+  plugins: [typography],
+  // plugins: [typography, daisyui],
+  // daisyui: {
+  //   themes: ["synthwave"],
+  // },
 });
