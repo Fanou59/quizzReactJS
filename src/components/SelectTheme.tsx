@@ -1,18 +1,28 @@
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+
 export const SelectTheme = ({ themes, isSelected, children }) => {
   return (
-    <select
-      className="select select-info w-full max-w-xs capitalize"
-      onChange={isSelected}
-      defaultValue=""
-    >
-      <option value="" disabled>
-        -- Sélectionner {children} --
-      </option>
-      {themes.map((theme, index) => (
-        <option key={index} value={theme.name}>
-          {theme.name}
-        </option>
-      ))}
-    </select>
+    <Select onValueChange={isSelected} defaultValue="">
+      <SelectTrigger className="">
+        <SelectValue placeholder={`Select ${children}`} />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          {themes.map((theme, index) => (
+            <SelectItem key={index} value={theme.name}>
+              {theme.name}
+            </SelectItem>
+          ))}
+        </SelectGroup>
+      </SelectContent>
+    </Select>
   );
 };

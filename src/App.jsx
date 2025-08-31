@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import { SelectTheme } from "./components/SelectTheme";
 import { Score } from "./components/Score";
 import { themes } from "./data/index";
-import { AppButton } from "./components/AppButton";
+// import { AppButton } from "./components/AppButton";
 import { DisplayQuestions } from "./components/DisplayQuestions";
 import { ExplanationDisplay } from "./components/ExplanationDisplay";
 import { disciplines } from "./data/disciplines";
@@ -10,6 +10,7 @@ import { ProgressBar } from "./components/ProgressBar";
 import { reducer } from "./utils/reducer";
 import { ContactUs } from "./components/ContactUs";
 import { LeaveMeAFeedBack } from "./components/LeaveMeAFeedBack";
+import { Button } from "./components/ui/button";
 
 const initialState = {
   currentQuestion: 0,
@@ -86,7 +87,7 @@ function App() {
     <>
       <div className="flex flex-col items-center gap-5">
         <h1 className="font-bold uppercase tracking-widest text-2xl text-white">
-          Quiz' Collège
+          Quiz Collège
         </h1>
         <SelectTheme themes={disciplines} isSelected={handleSelectDiscipline}>
           une discipline
@@ -112,7 +113,7 @@ function App() {
                 Retravailles ton cours avant de refaire le quiz 😢
               </span>
             )}
-            <AppButton onClick={resetQuiz}>Retry ?</AppButton>
+            <Button onClick={resetQuiz}>Retry ?</Button>
           </div>
         ) : (
           <>
