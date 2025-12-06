@@ -86,7 +86,7 @@ function App() {
     <>
       <div className="flex flex-col items-center gap-5">
         <h1 className="font-bold uppercase tracking-widest text-2xl text-white">
-          Quiz&apos Collège
+          Quiz&apos; Collège
         </h1>
         <SelectTheme themes={disciplines} isSelected={handleSelectDiscipline}>
           une discipline
